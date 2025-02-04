@@ -1,0 +1,93 @@
+Company Datatbase 
+
+CREATE DATABASE Company;
+
+Employee Table:
+
+CREATE table Employee (
+Emp_id SERIAL PRIMARY KEY, 
+LName VARCHAR(50),
+FName VARCHAR(50),
+Date DATE,
+Department VARCHAR(50),
+Pay_rate FLOAT,
+Union_ CHAR(1)
+);
+
+Insert values:
+
+Insert into Employee(lname, fname, date, department, pay_rate, union_)
+values 
+ 
+('Marinez', 'Carlos E.', '1994-01-10','Shipping', 8.50, 'Y'),
+('Bain', 'Nigel L.', '1994-01-15', 'Shipping', 8.25, 'Y'),
+('Canul', 'David R.', '1194-02-04', 'Accounting', 9.75,'N'),
+('Leslie','Thomas F.','1994-02-05', 'Production',6.00,'Y'),
+('Pascual','Mark A.', '1994-03-04', 'Marketing', 7.50,'Y'),
+('Middleton', 'Lisa A.', '1994-03-12', 'Marketing', 9.10, 'N');
+
+
+Query #1:
+
+Select *
+from Employee
+where pay_rate > 8.00;
+
+Query #2:
+
+Select min (pay_rate)
+from Employee;
+
+Query #3:
+
+Select Emp_id, fname, lname, Pay_rate
+from Employee 
+where pay_rate < 9.00;
+
+Query #4:
+
+Select * 
+from Employee 
+where department in ('Accounting');
+
+Query#5:
+
+Select *
+from Employee
+where lname like '%B%' or lname like '%M%';
+
+Query #6:
+
+Select fname, lname, department
+from Employee
+where pay_rate between 8.00 and 10.00;
+
+Query #7:
+Select *
+from Employee
+where date < '1994-04-01';
+
+Query #8
+
+Select * 
+from Employee
+where union_ = 'Y' and pay_rate < 8.00;
+
+Query #9
+
+Select Fname, lname, department, union_
+from Employee
+where department = 'Marketing' and union_ = 'N';
+
+
+Query #10
+select avg(pay_rate) 
+from Employee;
+
+
+Query #11
+
+update Employee
+set department = 'Accounting'
+where Emp_id = 6;
+
